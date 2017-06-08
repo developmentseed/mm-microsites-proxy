@@ -1,0 +1,28 @@
+{
+  "name": "mm-microsites-proxy",
+  "version": "0.0.1",
+  "description": "Proxy server for mm microsites",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/developmentseed/mm-microsites-proxy.git"
+  },
+  "author": {
+    "name": "Development Seed",
+    "url": "httpsL//developmentseed.org"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/developmentseed/mm-microsites-proxy/issues"
+  },
+  "homepage": "https://github.com/developmentseed/mm-microsites-proxy#readme",
+  "dependencies": {
+    "hapi": "^16.4.2",
+    "url": "^0.11.0",
+    "wreck": "^12.2.2"
+  }
+}
