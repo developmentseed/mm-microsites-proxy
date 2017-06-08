@@ -1,6 +1,6 @@
 var Hapi = require('hapi');
-// var url = require('url');
 var Wreck = require('wreck');
+var ical = require('ical');
 
 var server = new Hapi.Server();
 
@@ -11,6 +11,7 @@ server.connection({
 var getGoogleCalendar = function (calendar, next) {
   const icalUrl = 'https://calendar.google.com/calendar/ical/' + calendar + '/public/basic.ics';
   console.log(icalUrl);
+  console.log(ical)
   Wreck.get(icalUrl, null, (err, res, calEvents) => {
     if (err) {
       return next(err);
@@ -18,7 +19,8 @@ var getGoogleCalendar = function (calendar, next) {
     if (res.statusCode !== 200) {
       return next(res.statusCode);
     }
-    next(null, calEvents.toString());
+    // parse ical string to jcal and return.
+    next(null, ical.parseICS(calEvents.toString()));
   });
 };
 
