@@ -25,6 +25,9 @@
   "dependencies": {
     "hapi": "^16.4.2",
     "url": "^0.11.0",
+    "ical": "^0.5.0",
+    "rrule": "^2.2.0",
+    "timezone-js": "^0.4.13",
     "wreck": "^12.2.2"
   },
   "devDependencies": {
@@ -35,9 +38,6 @@
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.1",
-    "eslint-plugin-standard": "^3.0.1",
-    "ical": "^0.5.0",
-    "rrule": "^2.2.0",
-    "timezone-js": "^0.4.13"
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
