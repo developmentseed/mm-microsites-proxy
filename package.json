@@ -1,0 +1,43 @@
+{
+  "name": "mm-microsites-proxy",
+  "version": "0.0.1",
+  "description": "Proxy server for mm microsites",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint .",
+    "start-dev": "nodemon index.js",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/developmentseed/mm-microsites-proxy.git"
+  },
+  "author": {
+    "name": "Development Seed",
+    "url": "httpsL//developmentseed.org"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/developmentseed/mm-microsites-proxy/issues"
+  },
+  "homepage": "https://github.com/developmentseed/mm-microsites-proxy#readme",
+  "dependencies": {
+    "hapi": "^16.4.2",
+    "url": "^0.11.0",
+    "wreck": "^12.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-semistandard": "^11.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-standard": "^3.0.1",
+    "ical": "^0.5.0",
+    "rrule": "^2.2.0",
+    "timezone-js": "^0.4.13"
+  }
+}
