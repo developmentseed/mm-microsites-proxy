@@ -1,7 +1,7 @@
 var Hapi = require('hapi');
 var Wreck = require('wreck');
 var ical = require('ical');
-var rrulestr = require('rrule').rrulestr;
+var recur = require('./recur-helpers/index.js')
 // var timezone = require('timezone-js');
 
 var server = new Hapi.Server();
@@ -30,7 +30,7 @@ function parseJcal (Jcal) {
     if (key.match(/google/)) {
       if (Jcal[key].rrule) {
         console.log('it repeats!');
-        return Jcal[key]
+        return recur(Jcal[key]);
       } else {
         console.log('does not repeat');
         return {
