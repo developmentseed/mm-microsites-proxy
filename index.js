@@ -1,6 +1,7 @@
 var Hapi = require('hapi');
 var Wreck = require('wreck');
 var ical = require('ical');
+var rrulestr = require('rrule').rrulestr;
 // var timezone = require('timezone-js');
 
 var server = new Hapi.Server();
@@ -23,29 +24,20 @@ function getGoogleCalendar (calendar, next) {
     next(null, ical.parseICS(calEvents.toString()));
   });
 }
-// deal with the time zone
-  // do we want to make an assumption about what the correct time zone?
-  // or do we just say, from what ever timezone the person is adding in calendar
-  // date info, we set the e time zome for that.
-// format the non repeating examples
-  // we want:
-    // name
-    // location
-    // link to sign up
 // dig into the lovely world of rrule
 function parseJcal (Jcal) {
   return Object.keys(Jcal).map((key, val) => {
     if (key.match(/google/)) {
       if (Jcal[key].rrule) {
         console.log('it repeats!');
+        return Jcal[key]
       } else {
         console.log('does not repeat');
         return {
           'name': Jcal[key].summary,
           'time': [Jcal[key].start, Jcal[key].end],
           'location': Jcal[key].location,
-          'description': Jcal[key].description,
-          'link': 'surfing'
+          'description': Jcal[key].description
         };
       }
     } else {
@@ -53,7 +45,6 @@ function parseJcal (Jcal) {
     }
   });
 }
-
 server.method({
   name: 'getGoogleCalendar',
   method: getGoogleCalendar,
@@ -70,8 +61,8 @@ server.route({
           error: error
         }).code(500);
       }
-      const Jcal = parseJcal(result);
-      return rep(Jcal);
+      const parsedJcal = parseJcal(result);
+      return rep(parsedJcal);
     });
   },
   config: {
